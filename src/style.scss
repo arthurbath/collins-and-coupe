@@ -1,0 +1,261 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+
+$emerald: #00513e;
+$ocean: #022533;
+$mint: #8ed6b2;
+$goldenrod: #d8c03d;
+
+@mixin media-sm {
+
+	@media (min-width: 576px) {
+		@content;
+	}
+}
+
+@mixin media-md {
+
+	@media (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin media-lg {
+
+	@media (min-width: 992px) {
+		@content;
+	}
+}
+
+@mixin media-xl {
+
+	@media (min-width: 1200px) {
+		@content;
+	}
+}
+
+/* Fonts */
+@font-face {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'royal signage';
+	src: url('fonts/royal-signage.woff') format('woff');
+}
+
+/* Pervasives */
+html,
+body {
+	min-height: 100%;
+}
+
+body {
+	background-image: linear-gradient(180deg, $emerald, $ocean);
+	color: white;
+	font-family: 'libre baskerville', 'baskerville';
+	text-shadow: 0 1px 0 rgba(black, 0.8);
+}
+
+a {
+	color: white;
+}
+
+/* Components */
+.container {
+	position: relative;
+	text-align: center;
+	padding: 2rem 0 1rem;
+
+	@include media-md {
+		width: 60%;
+		margin: 2em auto;
+		background-color: rgba(black, 0.3);
+		border-radius: 1.75em;
+	}
+
+	@include media-xl {
+		display: flex;
+		width: 80%;
+		max-width: 70em;
+		padding: 2rem 0;
+	}
+}
+
+.ornament {
+	position: absolute;
+	opacity: 0.6;
+
+	&--top-left,
+	&--top-right,
+	&--bottom-left,
+	&--bottom-right {
+		background-image: url('images/ornament-corner.png');
+		background-repeat: none;
+		background-size: contain;
+		width: 2.5em;
+		height: 2.5em;
+	}
+
+	&--top-left {
+		top: 0.5rem;
+		left: 0.5rem;
+	}
+
+	&--top-right {
+		top: 0.5rem;
+		right: 0.5rem;
+		transform: rotate(90deg);
+	}
+
+	&--bottom-left {
+		bottom: 0.5rem;
+		left: 0.5rem;
+		transform: rotate(270deg);
+	}
+
+	&--bottom-right {
+		bottom: 0.5rem;
+		right: 0.5rem;
+		transform: rotate(180deg);
+	}
+}
+
+.logo {
+	width: 80%;
+	margin: 0 auto 1.5rem;
+
+	@include media-sm {
+		width: 60%;
+	}
+
+	@include media-xl {
+		display: flex;
+		align-items: center;
+		padding-left: 3em;
+		box-sizing: border-box;
+	}
+
+	&__image {
+		width: 100%;
+		filter: drop-shadow(0 1px rgba(black, 0.8));
+	}
+}
+
+.information {
+	text-align: center;
+
+	@include media-xl {
+		width: 35%;
+	}
+}
+
+.subtitle {
+	font-family: 'royal signage';
+	font-size: 1.3em;
+	line-height: 1.7em;
+	color: $mint;
+	margin-bottom: 2rem;
+}
+
+.opening-notice {
+	font-family: 'royal signage';
+	margin-bottom: 2rem;
+
+	&__message {
+		text-transform: lowercase;
+		margin: 0;
+	}
+
+	&__date {
+		position: relative;
+		margin: 0;
+		font-size: 1.7em;
+		color: $goldenrod;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: -0.5em;
+			background-image: url('images/ornament-spark.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center center;
+			width: 1.4em;
+			height: 2.5em;
+			opacity: 0.6;
+		}
+
+		&::before {
+			left: 50%;
+			margin-left: -5em;
+			transform: rotate(180deg);
+		}
+
+		&::after {
+			right: 50%;
+			margin-right: -5em;
+		}
+	}
+
+	&__month {
+		display: inline-block;
+		margin-left: 0.15em;
+	}
+
+	&__day {
+		font-size: 1.45em;
+		vertical-align: -0.07em;
+	}
+}
+
+.address {
+	margin: 0 0 2.25rem;
+	line-height: 1.4;
+}
+
+.hours {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 0 2rem;
+	font-size: 0.9em;
+
+	&__day,
+	&__times {
+		display: inline-block;
+		box-sizing: border-box;
+		width: 50%;
+		margin: 0 0 0.4em;
+	}
+
+	&__day {
+		text-align: right;
+		color: $mint;
+		padding-right: 0.25em;
+	}
+
+	&__times {
+		text-align: left;
+		padding-left: 0.25em;
+	}
+}
+
+.phone {
+	margin: 0 0 2rem;
+}
+
+.social {
+	margin-bottom: 1.5rem;
+
+	&__link {
+		display: inline-block;
+		margin: 0 0.3em;
+	}
+
+	&__icon {
+		height: 1.5em;
+	}
+}
+
+.copyright {
+	font-size: 0.7em;
+}

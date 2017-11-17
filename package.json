@@ -9,7 +9,9 @@
 		"url": "https://github.com/arthurbath/collins-and-coupe"
 	},
 	"main": "index.js",
-	"dependencies": {},
+	"dependencies": {
+		"normalize.css": "^7.0.0"
+	},
 	"devDependencies": {
 		"autoprefixer": "^7.1.6",
 		"babel-core": "^6.26.0",
