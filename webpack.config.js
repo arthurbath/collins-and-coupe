@@ -51,7 +51,7 @@ module.exports = (env = {}) => ({
 				}],
 			}),
 		}, {
-			test: /\.(png|svg|jpe?g|gif)$/,
+			test: /\.(png|svg|jpe?g|gif)$/, // Images
 			exclude: /node_modules/,
 			use: [{
 				loader: 'file-loader',
@@ -78,7 +78,7 @@ module.exports = (env = {}) => ({
 				},
 			}],
 		}, {
-			test: /\.(eot|ttf|woff|woff2)$/,
+			test: /\.(eot|ttf|woff|woff2|xml)$/, // Files
 			exclude: /node_modules/,
 			use: [{
 				loader: 'file-loader',
