@@ -1,15 +1,17 @@
 {
 	"author": "Arthur Bath",
-	"name": "collins-and-coupe",
-	"description": "Collins & Coupe",
-	"version": "1.0.0",
+	"name": "collins-and-coupe-frontend",
+	"description": "Collins & Coupe: Frontend",
+	"version": "2.0.0",
 	"license": "ISC",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/arthurbath/collins-and-coupe"
+		"url": "https://github.com/arthurbath/collins-and-coupe-frontend"
 	},
 	"main": "index.js",
 	"dependencies": {
+		"axios": "^0.17.1",
+		"moment": "^2.19.2",
 		"normalize.css": "^7.0.0"
 	},
 	"devDependencies": {
