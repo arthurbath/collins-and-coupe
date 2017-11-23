@@ -13,7 +13,7 @@ let businessData
 axios.get('http://localhost:10001').then(response => {
 	businessData = response.data
 }).catch(error => {
-	console.log(error)
+	console.error(error)
 })
 
 // Format military time to meridiem
