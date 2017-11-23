@@ -6,6 +6,7 @@ import './sitemap.xml'
 
 import axios from 'axios'
 import moment from 'moment'
+import _find from 'lodash/find'
 
 // Get Yelp data from backend
 let businessData
@@ -20,28 +21,36 @@ let militaryToMeridiem = military => moment(military, 'hhmm').format(military.sl
 
 // Fill content
 let fillContent = () => {
-	let address1 = document.querySelector('.jsAddress1')
-	let address2 = document.querySelector('.jsAddress2')
-	address1.textContent = businessData.location.display_address[0]
-	address2.textContent = businessData.location.display_address[1]
+	// For each day of the week, create a <dt> and <dd> and append to the hours container
+	let hours = document.querySelector('.hours')
+	;['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach((day, index) => {
+		let dayElement = document.createElement('dt')
+		dayElement.classList.add('hours__day')
+		dayElement.textContent = day
+		hours.appendChild(dayElement)
 
-	let hours = document.querySelectorAll('.jsHours')
-	businessData.hours[0].open.forEach(hourSet => {
-		hours[hourSet.day].textContent = `${militaryToMeridiem(hourSet.start)}–${militaryToMeridiem(hourSet.end)}`
+		let timeSet = _find(businessData.hours[0].open, { day: index })
+		let timesElement = document.createElement('dd')
+		timesElement.classList.add('hours__times')
+		timesElement.textContent = timeSet
+			? `${militaryToMeridiem(timeSet.start)}–${militaryToMeridiem(timeSet.end)}`
+			: 'Closed'
+		hours.appendChild(timesElement)
 	})
 
-	let phone = document.querySelector('.jsPhone')
-	phone.textContent = businessData.display_phone
-	phone.href = `tel:${businessData.phone}`
-
-	let yelpLink = document.querySelector('.jsYelpLink')
+	// Update Yelp link with Yelp's preferred URL, params
+	let yelpLink = document.querySelector('.social__link--yelp')
 	yelpLink.href = businessData.url
 
-	let container = document.querySelector('.jsContainer')
-	container.classList.add('container--revealed')
+	// Unhide container
+	let container = document.querySelector('.container')
+	container.classList.remove('container--hidden')
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+	let container = document.querySelector('.container')
+	container.classList.add('container--hidden')
+
 	let waitForBusinessData = setInterval(() => {
 		if (!businessData) { return }
 		fillContent()

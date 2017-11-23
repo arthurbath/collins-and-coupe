@@ -64,7 +64,7 @@ a {
 	position: relative;
 	text-align: center;
 	padding: 2rem 0 1rem;
-	opacity: 0;
+	opacity: 1;
 	transition: opacity 0.5s linear;
 
 	@include media-md {
@@ -81,8 +81,8 @@ a {
 		padding: 2rem 0;
 	}
 
-	&--revealed {
-		opacity: 1;
+	&--hidden {
+		opacity: 0;
 	}
 }
 
@@ -224,6 +224,10 @@ a {
 	flex-wrap: wrap;
 	margin: 0 0 2rem;
 	font-size: 0.9em;
+
+	&:empty {
+		margin-bottom: 0; // If not populated by JS, no margin
+	}
 
 	&__day,
 	&__times {
