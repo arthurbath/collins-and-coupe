@@ -163,54 +163,36 @@ a {
 }
 
 .opening-notice {
-	font-family: 'royal signage';
+	position: relative;
 	margin-bottom: 2rem;
+	color: $goldenrod;
+	font-family: 'royal signage';
+	font-size: 1.7em;
+	text-indent: 0.25em;
 
-	&__message {
-		text-transform: lowercase;
-		margin: 0;
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: -0.7em;
+		background-image: url('images/ornament-spark.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		width: 2.5em;
+		height: 2.5em;
+		opacity: 0.6;
 	}
 
-	&__date {
-		position: relative;
-		margin: 0;
-		font-size: 1.7em;
-		color: $goldenrod;
-
-		&::before,
-		&::after {
-			content: '';
-			position: absolute;
-			top: -0.5em;
-			background-image: url('images/ornament-spark.png');
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: center center;
-			width: 1.4em;
-			height: 2.5em;
-			opacity: 0.6;
-		}
-
-		&::before {
-			left: 50%;
-			margin-left: -5em;
-			transform: rotate(180deg);
-		}
-
-		&::after {
-			right: 50%;
-			margin-right: -5em;
-		}
+	&::before {
+		left: 50%;
+		margin-left: -5em;
+		transform: rotate(180deg);
 	}
 
-	&__month {
-		display: inline-block;
-		margin-left: 0.15em;
-	}
-
-	&__day {
-		font-size: 1.45em;
-		vertical-align: -0.07em;
+	&::after {
+		right: 50%;
+		margin-right: -5em;
 	}
 }
 
