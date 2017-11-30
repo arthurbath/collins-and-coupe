@@ -64,8 +64,6 @@ a {
 	position: relative;
 	text-align: center;
 	padding: 2rem 0 1rem;
-	opacity: 1;
-	transition: opacity 0.5s linear;
 
 	@include media-md {
 		width: 60%;
@@ -82,7 +80,7 @@ a {
 	}
 
 	&--hidden {
-		opacity: 0;
+		display: none;
 	}
 }
 
