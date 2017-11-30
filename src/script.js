@@ -32,8 +32,8 @@ const daysOfWeek = [{
 // Callback initiated by Google Place API
 let businessInfo
 window.setBusinessInfo = () => {
-	const map = new google.maps.Map(document.querySelector('.map'))
-	const service = new google.maps.places.PlacesService(map)
+	const map = new google.maps.Map(document.querySelector('.map')) // eslint-disable-line no-undef
+	const service = new google.maps.places.PlacesService(map) // eslint-disable-line no-undef
 	service.getDetails({ placeId: 'ChIJk4sOf_lU2YAR1SxMa5Rdxic' }, place => {
 		businessInfo = place
 	})
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	let waitForBusinessInfoIterations = 0
 	let waitForBusinessInfo = setInterval(() => {
-
 		// If the browser has been waiting for business info too long, reveal container
 		waitForBusinessInfoIterations += 1
 		if (waitForBusinessInfoIterations > 5) {
