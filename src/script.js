@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			timesElement.classList.add('hours__times')
 			timesElement.textContent = timeSet
 				? `${militaryToMeridiem(timeSet.open.time)}–${militaryToMeridiem(timeSet.close.time)}`
-				: 'Closed'
+				: 'By Appointment'
 			hours.appendChild(timesElement)
 
 			stopWaitingForBusinessInfo()
